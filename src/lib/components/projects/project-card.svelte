@@ -92,7 +92,9 @@
 			<Icon icon="i-carbon-time" />
 			<Muted>{exactDuration}</Muted>
 		</Muted>
-		<Muted className="flex-1">{ellipsify(project.shortDescription, 100)}</Muted>
+		<Muted className="flex-1 py-4 md:py-2 md:min-h-[100px] md:max-h-[100px]"
+			>{ellipsify(project.shortDescription, 100)}</Muted
+		>
 		<div class="flex w-full flex-row items-center justify-between">
 			<Badge variant="outline">{from}</Badge>
 			<Badge variant="outline">{to}</Badge>

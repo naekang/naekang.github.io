@@ -62,9 +62,7 @@
 					<TooltipContent side="bottom">Exact duration</TooltipContent>
 				</TooltipTrigger>
 			</Tooltip>
-			<div>
-				{ellipsify(it.shortDescription, 150)}
-			</div>
+			<div class="py-2 text-sm text-muted-foreground">{ellipsify(it.shortDescription, 150)}</div>
 			<div class="flex flex-row flex-wrap gap-2">
 				{#each it.subjects as subject (subject)}
 					<Badge variant="secondary">{subject}</Badge>
