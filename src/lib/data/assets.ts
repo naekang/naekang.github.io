@@ -69,7 +69,13 @@ const Assets = {
 	Jest: asset('jest.png'),
 	Unocss: asset('unocss.svg'),
 	Ruvy: asset('ruvy.svg'),
-	Postcss: asset('postcss.svg')
+	Postcss: asset('postcss.svg'),
+	UosLogo: asset('uos-logo.png'),
+	Postgresql: asset('postgresql.svg'),
+	Cosweal: asset('cosweal.png'),
+	Tidesquare: asset('tidesquare.jpg'),
+	Springboot: asset('springboot.svg'),
+	Terraform: asset('terraform.svg')
 };
 
 export default Assets;

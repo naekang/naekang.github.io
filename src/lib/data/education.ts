@@ -5,29 +5,29 @@ const title = 'Education';
 
 const items: Array<Education> = [
 	{
-		degree: 'Bachelor degree of Computer Science',
+		degree: '컴퓨터과학부 학사',
 		description: '',
-		location: 'Tunisia',
-		logo: Assets.Unknown,
+		location: 'Seoul, Korea',
+		logo: Assets.UosLogo,
 		name: '',
-		organization: 'ISTIC',
-		period: { from: new Date(2020, 0, 1), to: new Date(2022, 5, 1) },
+		organization: 'University of Seoul',
+		period: { from: new Date(2017, 2, 2), to: new Date(2023, 7, 22) },
 		shortDescription: '',
-		slug: 'dummy-education-item',
-		subjects: ['C', 'Algorithm', 'Algebra', 'Python', 'C++', 'Java', 'English']
+		slug: 'uos-bachelor',
+		subjects: ['C', 'Algorithm', 'Algebra', 'Python', 'C++', 'Java']
 	},
-	{
-		degree: 'PhD of Computer Science',
-		description: '',
-		location: 'USA',
-		logo: Assets.Unknown,
-		name: '',
-		organization: 'MIT',
-		period: { from: new Date(2023, 0, 1) },
-		shortDescription: '',
-		slug: 'dummy-education-item-2',
-		subjects: ['Assembly', 'Rust', 'Computer Architecture', 'Algorithms and Data structures']
-	}
+	// {
+	// 	degree: 'PhD of Computer Science',
+	// 	description: '',
+	// 	location: 'USA',
+	// 	logo: Assets.Unknown,
+	// 	name: '',
+	// 	organization: 'MIT',
+	// 	period: { from: new Date(2023, 0, 1) },
+	// 	shortDescription: '',
+	// 	slug: 'dummy-education-item-2',
+	// 	subjects: ['Assembly', 'Rust', 'Computer Architecture', 'Algorithms and Data structures']
+	// }
 ];
 
 const EducationData = { title, items };
