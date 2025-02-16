@@ -75,7 +75,10 @@ const Assets = {
 	Cosweal: asset('cosweal.png'),
 	Tidesquare: asset('tidesquare.jpg'),
 	Springboot: asset('springboot.svg'),
-	Terraform: asset('terraform.svg')
+	Terraform: asset('terraform.svg'),
+	ArgoCD: asset('argocd.svg'),
+	Atlassian: asset('atlassian.png'),
+	Slack: asset('slack.png')
 };
 
 export default Assets;

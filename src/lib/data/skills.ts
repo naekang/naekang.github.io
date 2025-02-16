@@ -3,6 +3,7 @@ import type { StringWithAutoComplete } from '@riadh-adrani/utils';
 import { omit } from '@riadh-adrani/utils';
 import Assets from './assets';
 import svelteMd from './md/svelte.md?raw';
+import terraformMd from './md/terraform.md?raw';
 
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
@@ -18,7 +19,8 @@ const categories = [
 	defineSkillCategory({ name: 'Dev Tools', slug: 'devtools' }),
 	defineSkillCategory({ name: 'Markup & Style', slug: 'markup-style' }),
 	defineSkillCategory({ name: 'Design', slug: 'design' }),
-	defineSkillCategory({ name: 'Soft Skills', slug: 'soft' })
+	defineSkillCategory({ name: 'Soft Skills', slug: 'soft' }),
+	defineSkillCategory({ name: 'Collaboration tools', slug: 'collab-tools' }),
 ] as const;
 
 const defineSkill = <S extends string>(
@@ -82,8 +84,7 @@ const items = [
 	defineSkill({
 		slug: 'terraform',
 		color: 'purple',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+		description: terraformMd,
 		logo: Assets.Terraform,
 		name: 'Terraform',
 		category: 'pro-lang'
@@ -91,8 +92,7 @@ const items = [
 	defineSkill({
 		slug: 'java',
 		color: 'blue',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+		description: '',
 		logo: Assets.Java,
 		name: 'Java',
 		category: 'pro-lang'
@@ -100,26 +100,39 @@ const items = [
 	defineSkill({
 		slug: 'aws',
 		color: 'orange',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+		description: '',
 		logo: Assets.AWS,
 		name: 'AWS',
 		category: 'devops'
 	}),
 	defineSkill({
+		slug: 'kubernetes',
+		color: 'blue',
+		description: '',
+		logo: Assets.Kubernetes,
+		name: 'Kubernetes',
+		category: 'devops'
+	}),
+	defineSkill({
+		slug: 'argocd',
+		color: 'orange',
+		description: '',
+		logo: Assets.ArgoCD,
+		name: 'ArgoCD',
+		category: 'devops'
+	}),
+	defineSkill({
 		slug: 'postgresql',
 		color: 'blue',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+		description: '',
 		logo: Assets.Postgresql,
 		name: 'PostgreSQL',
 		category: 'db'
 	}),
 	defineSkill({
-		slug: 'reactjs',
+		slug: 'springboot',
 		color: 'cyan',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+		description: '',
 		logo: Assets.Springboot,
 		name: 'Springboot',
 		category: 'library'
@@ -131,6 +144,30 @@ const items = [
 		logo: Assets.Svelte,
 		name: 'Svelte',
 		category: 'library'
+	}),
+	defineSkill({
+		slug: 'atlassian',
+		color: 'blue',
+		description: 'Jira를 활용한 팀 협업 및 업무 관리',
+		logo: Assets.Atlassian,
+		name: 'Jira',
+		category: 'collab-tools'
+	}),
+	defineSkill({
+		slug: 'confluence',
+		color: 'blue',
+		description: 'Confluence를 활용한 문서 관리 및 협업',
+		logo: Assets.Atlassian,
+		name: 'Confluence',
+		category: 'collab-tools'
+	}),
+	defineSkill({
+		slug: 'slack',
+		color: 'red',
+		description: 'Slack를 활용한 팀 협업 및 업무 관리',
+		logo: Assets.Slack,
+		name: 'Slack',
+		category: 'collab-tools'
 	})
 ] as const;
 
