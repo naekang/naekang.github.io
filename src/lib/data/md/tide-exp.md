@@ -32,7 +32,7 @@
 ### Tenant, Cell Provisioning 환경 구성
 - SvelteKit을 활용한 팀 내 어드민 페이지 구축
 - AWS Step function을 이용한 Tenant Provisioning 프로세스 구축
-- Bitbuckt pipeline & Terraform을 활용하여 Cell Provisioning 프로세스 구축
+- Bitbucket pipeline & Terraform을 활용하여 Cell Provisioning 프로세스 구축
 <br/>
 
 ### App of Apps 패턴을 활용한 통합 ArgoCD 구축
