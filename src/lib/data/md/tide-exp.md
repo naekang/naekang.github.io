@@ -19,6 +19,7 @@
 
 ### Monolithic Architecture → Cell-based Architecture로의 전환
 - XML 데이터 Aggregation 및 Converting Cell / 항공사 호출 Cell / DB 접근 Cell 로 분리
+  - DB 접근 Cell -> 기존 MyBatis 환경에서 JPA + QueryDSL로 전환
 - 여행사와 항공사 간의 데이터 처리 효율성 증대
 - Tenant 증가에 따른 확장성 확보
 <br/>
@@ -31,8 +32,10 @@
 
 ### Tenant, Cell Provisioning 환경 구성
 - SvelteKit을 활용한 팀 내 어드민 페이지 구축
-- AWS Step function을 이용한 Tenant Provisioning 프로세스 구축
-- Bitbucket pipeline & Terraform을 활용하여 Cell Provisioning 프로세스 구축
+- Tenant Provisioning
+  - AWS Step function을 이용하여 hmac key, domain, DB 세팅 자동화
+- Cell Provisioning
+  - Bitbucket pipeline, AWS CodeBuild, CodePipeline을 활용하여 Cell type에 맞는 tfvars 생성 및 Provisioning 자동화
 <br/>
 
 ### App of Apps 패턴을 활용한 통합 ArgoCD 구축
