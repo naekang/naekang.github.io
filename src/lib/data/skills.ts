@@ -130,6 +130,22 @@ const items = [
 		category: 'db'
 	}),
 	defineSkill({
+		slug: 'documentDB',
+		color: 'blue',
+		description: '',
+		logo: Assets.DocumentDB,
+		name: 'DocumentDB',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'elasticache',
+		color: 'blue',
+		description: '',
+		logo: Assets.ElastiCache,
+		name: 'ElastiCache',
+		category: 'db'
+	}),
+	defineSkill({
 		slug: 'springboot',
 		color: 'cyan',
 		description: '',

@@ -78,7 +78,9 @@ const Assets = {
 	Terraform: asset('terraform.svg'),
 	ArgoCD: asset('argocd.svg'),
 	Atlassian: asset('atlassian.png'),
-	Slack: asset('slack.png')
+	Slack: asset('slack.png'),
+	ElastiCache: asset('ElastiCache.svg'),
+	DocumentDB: asset('DocumentDB.svg'),
 };
 
 export default Assets;

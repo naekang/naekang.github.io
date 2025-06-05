@@ -33,7 +33,7 @@ const items: Array<Project> = [
 			from: new Date(2024, 2, 1),
 			to: new Date(2024, 5, 30)
 		},
-		skills: getSkills('java', 'springboot', 'postgresql', 'aws'),
+		skills: getSkills('java', 'springboot', 'postgresql', 'aws', 'documentDB', 'elasticache'),
 		type: 'B2B SaaS',
 		screenshots: []
 	},
