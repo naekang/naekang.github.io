@@ -1,0 +1,1 @@
+const e={Skills:"Skills",Projects:"Projects",Experience:"Experience",Education:"Education",Resume:"Resumé"},n={Introduction:"I'm a DevOps engineer who is constantly thinking about building the best infrastructure and operating stable services."},t={kr:"한국어",en:"English"},s={nav:e,main:n,toggle:t};export{s as default,n as main,e as nav,t as toggle};

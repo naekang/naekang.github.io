@@ -1,0 +1,1 @@
+const n={Skills:"기술",Projects:"프로젝트",Experience:"경력",Education:"학력",Resume:"이력서"},e={Introduction:"최적의 인프라를 구축하고 안정적인 서비스의 운영을 위해 끊임없이 고민하는 DevOps 엔지니어 김진호입니다."},o={kr:"한국어",en:"English"},t={nav:n,main:e,toggle:o};export{t as default,e as main,n as nav,o as toggle};
