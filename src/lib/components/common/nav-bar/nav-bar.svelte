@@ -42,7 +42,8 @@
 	<!-- larger than sm -->
 	<div class="hidden flex-[2] flex-row items-center justify-center gap-2 sm:flex">
 		{#each NavBarData.items as item}
-			<a href={href(item.href)}>
+			{#if item.title === 'Blogs'}
+				<a href="https://ddochi.kr/" target="_blank">
 				<Tooltip>
 					<TooltipTrigger>
 						<Button class="flex flex-row items-center justify-center gap-2" variant="ghost">
@@ -55,6 +56,34 @@
 					</TooltipContent>
 				</Tooltip>
 			</a>
+			{:else}
+				<a href={href(item.href)}>
+					<Tooltip>
+						<TooltipTrigger>
+							<Button class="flex flex-row items-center justify-center gap-2" variant="ghost">
+								<Icon icon={item.icon} className="text-xl" />
+								<div class="hidden lg:block">{item.title}</div>
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent side="bottom" class="lg:hidden">
+							{item.title}
+						</TooltipContent>
+					</Tooltip>
+				</a>
+			{/if}
+			<!-- <a href={href(item.href)}>
+				<Tooltip>
+					<TooltipTrigger>
+						<Button class="flex flex-row items-center justify-center gap-2" variant="ghost">
+							<Icon icon={item.icon} className="text-xl" />
+							<div class="hidden lg:block">{item.title}</div>
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent side="bottom" class="lg:hidden">
+						{item.title}
+					</TooltipContent>
+				</Tooltip>
+			</a> -->
 		{/each}
 	</div>
 	<div class="hidden flex-row items-center justify-end gap-2 sm:flex sm:flex-1">
@@ -85,7 +114,8 @@
 				<div class="flex flex-col gap-2 pt-4">
 					{#each NavBarData.items as item}
 						<DialogClose>
-							<a href={href(item.href)} class="w-full">
+							{#if item.title === 'Blogs'}
+								<a href="https://ddochi.kr/" target="_blank" class="w-full">
 								<Button
 									class="flex w-full flex-row items-center justify-start gap-2"
 									variant="ghost"
@@ -94,6 +124,26 @@
 									<div>{item.title}</div>
 								</Button>
 							</a>
+							{:else}
+								<a href={href(item.href)} class="w-full">
+								<Button
+									class="flex w-full flex-row items-center justify-start gap-2"
+									variant="ghost"
+								>
+									<Icon icon={item.icon} className="text-xl" />
+									<div>{item.title}</div>
+								</Button>
+							</a>
+							{/if}
+							<!-- <a href={href(item.href)} class="w-full">
+								<Button
+									class="flex w-full flex-row items-center justify-start gap-2"
+									variant="ghost"
+								>
+									<Icon icon={item.icon} className="text-xl" />
+									<div>{item.title}</div>
+								</Button>
+							</a> -->
 						</DialogClose>
 					{/each}
 					<Separator />
