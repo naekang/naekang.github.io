@@ -1,8 +1,6 @@
 ## NDC Aggregator Platform 운영 및 고도화
-- Java 1.8 + SpringBoot 2.x -> Java 21 + SpringBoot 3.x 전환 및 어플리케이션 최적화
-  - CPU, Memory 사용량 약 30% 감소, 인프라 비용 약 10% 절감
-- Svelte를 활용한 사내 테스트 페이지 운영 및 고도화
-  - 팀 QA 효율성 증대
-- 팀내 업무 효율성 증대를 위한 업무 자동화
-  - AWS Lambda + Opensearch를 활용하여 항공사 장애 발생 감지 자동화
-
+- Java 8 + Spring Boot 2.1 → Java 21 + Spring Boot 3.2로 전환하고 항공사·API 버전 조합 6가지의 연동 호환성을 검증해 운영 반영
+  - **반영 전후 운영 CPU 평균 사용률 40% → 20%, 메모리 사용률 85% → 42% 확인**
+  - 전환 전후 부하 테스트(nGrinder, vUser 16)에서 **TPS 6.3 → 7.5, 약 19% 향상 확인**
+- Retool·Svelte 기반 관리자 화면을 개발해 **반복적인 QA·운영 작업을 UI에서 수행할 수 있도록 구성**
+- AWS Lambda + OpenSearch로 항공사 장애 발생 감지를 자동화

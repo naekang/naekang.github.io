@@ -74,6 +74,7 @@ const Assets = {
 	Postgresql: asset('postgresql.svg'),
 	Cosweal: asset('cosweal.png'),
 	Tidesquare: asset('tidesquare.jpg'),
+	Healingpaper: asset('unni.png'),
 	Springboot: asset('springboot.svg'),
 	Terraform: asset('terraform.svg'),
 	ArgoCD: asset('argocd.svg'),

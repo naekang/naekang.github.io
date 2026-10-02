@@ -1,48 +1,51 @@
 ## NDC Aggregator Platform 운영 및 고도화
-- Java 1.8 + SpringBoot 2.x -> Java 21 + SpringBoot 3.x 전환 및 어플리케이션 최적화
-  - CPU, Memory 사용량 약 30% 감소, 인프라 비용 약 10% 절감
-- Svelte를 활용한 사내 테스트 페이지 운영 및 고도화
-  - 팀 QA 효율성 증대
-- 팀내 업무 효율성 증대를 위한 업무 자동화
-  - AWS Lambda + Opensearch를 활용하여 항공사 장애 발생 감지 자동화
+- Java 8 + Spring Boot 2.1 → Java 21 + Spring Boot 3.2로 전환하고 항공사·API 버전 조합 6가지의 연동 호환성을 검증해 운영 반영
+  - **반영 전후 운영 CPU 평균 사용률 40% → 20%, 메모리 사용률 85% → 42% 확인**
+  - 전환 전후 부하 테스트(nGrinder, vUser 16)에서 **TPS 6.3 → 7.5, 약 19% 향상 확인**
+- Retool·Svelte 기반 관리자 화면을 개발해 **반복적인 QA·운영 작업을 UI에서 수행할 수 있도록 구성**
+- AWS Lambda + OpenSearch로 항공사 장애 발생 감지를 자동화
 <br/>
 
 ## AWS DMS를 활용한 DB Migration
-- Tenant isolation 및 Row-level security를 위해 MySQL → PostgreSQL 전환
-  - Row-level security 적용을 통해 Multi-tenant 환경 구현 및 보안 강화
-- 무중단 SaaS 플랫폼 전환을 위해 AWS DMS를 활용한 Migration 진행
-  - AWS Aurora MySQL -> AWS Aurora PostgreSQL 이종간 Migration
-  - AWS DocumentDB Migration
-  - 기존 Tenant의 무중단 SaaS 전환
+- 테넌트 격리와 Row-level security 적용을 위해 MySQL → PostgreSQL 전환
+- AWS DMS의 CDC로 Aurora MySQL 테이블 13개의 변경 데이터를 동기화해 **PostgreSQL 기반 멀티 테넌트 SaaS 환경으로 예약 데이터를 이관**
+- 이관에 필요한 고객사 식별자 변환을 PostgreSQL 트리거로 구현해 **대상 시스템의 식별자 규칙에 맞춰 데이터를 적재**
+<br/>
 
 ## NDC Aggregator Platform SaaS 전환 with AWS Proserve
 
-### Monolithic Architecture → Cell-based Architecture로의 전환
-- XML 데이터 Aggregation 및 Converting Cell / 항공사 호출 Cell / DB 접근 Cell 로 분리
-  - DB 접근 Cell -> 기존 MyBatis 환경에서 JPA + QueryDSL로 전환
-- 여행사와 항공사 간의 데이터 처리 효율성 증대
-- Tenant 증가에 따른 확장성 확보
+### Monolithic Architecture → Cell-based Architecture 전환
+- XML 데이터 Aggregation·Converting / 항공사 호출 / DB 접근 단위로 서비스를 분리
+  - DB 접근 계층을 기존 MyBatis에서 JPA + QueryDSL로 전환
+- 고객사 증가에 따라 단위별로 확장할 수 있는 구조 확보
 <br/>
 
-### Terraform을 활용한 Global Architecture IaC 구축
-- 기존 ECS 환경에서 EKS 환경으로 전환
-- Transit gateway 및 AWS VPC Private Link를 활용하여 Multi-region간 통신 환경 구성
-- AWS Resource 모듈 및 사내 환경에 맞는 모듈 구성
+### Terraform을 활용한 멀티 계정 인프라 IaC 구축
+- 기존 ECS 환경을 EKS 환경으로 전환
+- Terraform으로 개발·검증·운영 3개 환경을 다시 프로비저닝하고 WAF·Transit Gateway·HPA 구성을 코드화해 **환경별 설정을 코드로 재현·변경할 수 있도록 구성**
+- Transit Gateway와 계정 간 리소스 공유(AWS RAM)를 Terraform으로 구성해 **서로 다른 AWS 계정의 클러스터 간 사설 통신 경로를 코드로 관리**
 <br/>
 
-### Tenant, Cell Provisioning 환경 구성
-- SvelteKit을 활용한 팀 내 어드민 페이지 구축
-- Tenant Provisioning
-  - AWS Step function을 이용하여 hmac key, domain, DB 세팅 자동화
-- Cell Provisioning
-  - Bitbucket pipeline, AWS CodeBuild, CodePipeline을 활용하여 Cell type에 맞는 tfvars 생성 및 Provisioning 자동화
+### 고객사·인프라 환경 생성 자동화
+- SvelteKit으로 팀 내 어드민 페이지 구축
+- AWS Step Functions로 고객사 환경 생성(HMAC 키, 도메인, DB 설정)을 자동화하고, 코드 보완과 전 과정 검증 수행
+- Bitbucket Pipelines, AWS CodeBuild, CodePipeline으로 환경 유형별 tfvars 생성과 인프라 프로비저닝을 자동화
 <br/>
 
 ### App of Apps 패턴을 활용한 통합 ArgoCD 구축
-- Multi cluster 환경에서 통합 관리를 위한 통합 ArgoCD 구축
-- Transit gateway를 활용하여 EKS 클러스터 간 통신 확보
+- ArgoCD App of Apps로 3개 클러스터의 애플리케이션 배포 구성을 통합해 **배포 상태를 한 곳에서 조회·관리**
 <br/>
 
-### PCI-DSS, ISMS-P 인증을 위한 보안 강화
-- Cross account, Multi region 환경에서 Transit gateway를 활용하여 통신하도록 함으로써 PCI-DSS 요건 충족
-- NACL, Security Group 등을 활용한 보안 강화
+### 운영 EKS Graviton(ARM) 전환
+- 운영 클러스터 3개를 ALB 트래픽 가중치 50:50 → 100 단계 방식으로 ARM 인스턴스에 전환해 **전환 대상 인스턴스의 시간당 단가를 약 15% 낮춤**
+- 기존 Bitbucket Pipelines의 멀티 아키텍처 빌드 제약을 amd64·arm64 병렬 단계로 해결해 **두 아키텍처 이미지를 하나의 파이프라인에서 생성**
+<br/>
+
+### ISO27001·PCI-DSS·ISMS-P 인증 요건 대응
+- 운영 서비스 3곳의 네트워크에 PCI-DSS 4.0 기준 접근 제어(NACL)를 적용하고 Security Hub·CIS 점검 항목을 조치해 **운영 환경의 보안 설정을 보완**
+- AWS Resilience Hub로 인프라 복원력을 평가하고 **RTO 2시간·RPO 10분의 복구 목표를 제안**
+<br/>
+
+### LGTM 관측성 플랫폼 구축
+- Tempo 구축을 담당하고 Loki·Grafana·Mimir 공동 구축에 참여해 **로그·메트릭·트레이스를 Grafana에서 조회하는 관측성 환경 마련**
+- AWS 주요 서비스의 CloudWatch 메트릭을 Mimir로 수집하고 **Grafana 대시보드 9종을 구성해 운영 지표 조회를 통합**

@@ -11,7 +11,7 @@ const hero: {
 } = {
 	title: `${BaseData.fullName},`,
 	description:
-		'최적의 인프라를 구축하고 안정적인 서비스의 운영을 위해 끊임없이 고민하는 DevOps 엔지니어 김진호입니다.',
+		'과금 데이터와 운영 로그로 원인을 찾아, 인프라 비용과 배포 중 오류를 줄여 온 DevOps 엔지니어 김진호입니다.',
 	links: [
 		{ label: 'GitHub', href: 'https://github.com/naekang', icon: 'i-carbon-logo-github' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/jinho-kim-b065b0207/', icon: 'i-carbon-logo-linkedin' },
